@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        return view('posts.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('posts.create');
     }
 
     /**
