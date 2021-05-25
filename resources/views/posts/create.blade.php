@@ -14,43 +14,44 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('posts.store') }}">
-            @csrf
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <form method="POST" action="{{ route('posts.store') }}">
+                @csrf
 
-            <!-- Title -->
-            <div>
-                <x-label for="title" :value="__('Title')" />
+                <!-- Title -->
+                <div>
+                    <x-label for="title" :value="__('Title')" />
 
-                <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
-            </div>
+                    <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
+                </div>
 
-            <!-- Body -->
-            <div>
-                <x-label for="body" :value="__('Body')" />
+                <!-- Body -->
+                <div>
+                    <x-label for="body" :value="__('Body')" />
 
-                <x-input id="body" class="block mt-1 w-full" type="text" name="body" :value="old('body')" required autofocus />
-            </div>
+                    <x-input id="body" class="block mt-1 w-full" type="text" name="body" :value="old('body')" required autofocus />
+                </div>
 
-            <!-- Category -->
-            <div>
-                <x-label for="category" :value="__('Category')" />
+                <!-- Category -->
+                <div>
+                    <x-label for="category" :value="__('Category')" />
 
-                <x-input id="category" class="block mt-1 w-full" type="text" name="category" :value="old('category')" required autofocus />
-            </div>
+                    <x-input id="category" class="block mt-1 w-full" type="text" name="category" :value="old('category')" required autofocus />
+                </div>
 
-            <!-- Author -->
-            <div>
-                <x-label for="author" :value="__('Author')" />
+                <!-- Author -->
+                <div>
+                    <x-label for="author" :value="__('Author')" />
 
-                <x-input id="author" class="block mt-1 w-full" type="text" name="author" :value="old('author')" required autofocus />
-            </div>
+                    <x-input id="author" class="block mt-1 w-full" type="text" name="author" :value="old('author')" required autofocus />
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button class="ml-4">
-                    {{ __('Save') }}
-                </x-button>
-            </div>
-        </form>
-
+                <div class="flex items-center justify-end mt-4">
+                    <x-button class="ml-4">
+                        {{ __('Save') }}
+                    </x-button>
+                </div>
+            </form>
+        </div>
     </div>
 </x-guest-layout>
