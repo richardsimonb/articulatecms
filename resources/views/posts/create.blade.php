@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('post.store') }}">
+        <form method="POST" action="{{ route('posts.store') }}">
             @csrf
 
             <!-- Title -->
