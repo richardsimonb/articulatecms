@@ -77,7 +77,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->category = $request->input('category');
+        $post->author = $request->input('author');
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**
