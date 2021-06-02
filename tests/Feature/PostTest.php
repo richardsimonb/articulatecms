@@ -8,11 +8,8 @@ use Tests\TestCase;
 
 class PostTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    use RefreshDatabase;
+    
     public function test_post_index_can_be_rendered()
     {
         $response = $this->get('/posts');
@@ -25,5 +22,23 @@ class PostTest extends TestCase
         $response = $this->get('/posts/create');
 
         $response->assertStatus(200);
+    }
+
+    public function test_new_post_can_be_created()
+    {
+        $response = $this->post('/posts', [
+            'title' => 'Title',
+            'body' => 'Text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+        
+        $this->assertDatabaseHas('posts', [
+            'title' => 'Title',
+        ]);
+
+        $response->assertRedirect();
+
+        
     }
 }
