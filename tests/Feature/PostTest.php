@@ -38,7 +38,12 @@ class PostTest extends TestCase
         ]);
 
         $response->assertRedirect();
+    }
 
-        
+    public function test_post_edit_can_be_rendered()
+    {
+        $response = $this->get('/posts/edit');
+
+        $response->assertStatus(200);
     }
 }
