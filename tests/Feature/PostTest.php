@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Post;
 
 class PostTest extends TestCase
 {
@@ -40,9 +41,30 @@ class PostTest extends TestCase
         $response->assertRedirect();
     }
 
+    public function test_post_show_can_be_rendered()
+    {
+        $post = Post::create([
+            'title' => 'Edit Title',
+            'body' => 'Text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+
+        $response = $this->get("/posts/{$post->id}");
+        
+        $response->assertStatus(200);
+    }
+
     public function test_post_edit_can_be_rendered()
     {
-        $response = $this->get('/posts/edit');
+        $post = Post::create([
+            'title' => 'Edit Title',
+            'body' => 'Text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+
+        $response = $this->get("/posts/{$post->id}/edit");
 
         $response->assertStatus(200);
     }
