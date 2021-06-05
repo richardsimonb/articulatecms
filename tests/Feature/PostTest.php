@@ -92,5 +92,21 @@ class PostTest extends TestCase
         $response->assertRedirect();
     }
 
+    public function test_post_can_be_deleted()
+    {
+        $post = Post::create([
+            'title' => 'Title',
+            'body' => 'Text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+
+        $response = $this->delete("/posts/{$post->id}");
+        
+        $this->assertDeleted($post);
+
+        $response->assertRedirect();
+    }
+
 
 }
