@@ -68,4 +68,29 @@ class PostTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_post_can_be_updated()
+    {
+        $post = Post::create([
+            'title' => 'Title',
+            'body' => 'Text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+
+        $response = $this->put("/posts/{$post->id}", [
+            'title' => 'Update Title',
+            'body' => 'Update text example',
+            'category' => 'New',
+            'author' => 'Author',
+        ]);
+        
+        $this->assertDatabaseHas('posts', [
+            'title' => 'Update Title',
+        ]);
+
+        $response->assertRedirect();
+    }
+
+
 }
