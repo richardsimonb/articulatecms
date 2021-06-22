@@ -38,4 +38,16 @@ class CategoryTest extends TestCase
 
         $response->assertRedirect();
     }
+
+    public function test_category_show_can_be_rendered()
+    {
+        $category = Category::create([
+            'name' => 'Name',
+            'parent' => 'Parent',
+        ]);
+
+        $response = $this->get("/categories/{$category->id}");
+        
+        $response->assertStatus(200);
+    }
 }
