@@ -24,4 +24,18 @@ class CategoryTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_new_category_can_be_created()
+    {
+        $response = $this->post('/categories', [
+            'name' => 'Name',
+            'parent' => 'Parent',
+        ]);
+        
+        $this->assertDatabaseHas('categories', [
+            'name' => 'Name',
+        ]);
+
+        $response->assertRedirect();
+    }
 }
