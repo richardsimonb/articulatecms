@@ -50,4 +50,16 @@ class CategoryTest extends TestCase
         
         $response->assertStatus(200);
     }
+
+    public function test_category_edit_can_be_rendered()
+    {
+        $category = Category::create([
+            'name' => 'Name',
+            'parent' => 'Parent',
+        ]);
+
+        $response = $this->get("/categories/{$category->id}/edit");
+
+        $response->assertStatus(200);
+    }
 }
