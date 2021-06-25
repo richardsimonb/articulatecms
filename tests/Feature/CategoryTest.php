@@ -62,4 +62,24 @@ class CategoryTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_category_can_be_updated()
+    {
+        $category = Category::create([
+            'name' => 'Name',
+            'parent' => 'Parent',
+        ]);
+
+        $response = $this->put("/categories/{$category->id}", [
+            'name' => 'New Name',
+            'parent' => 'New Parent',
+        ]);
+        
+        $this->assertDatabaseHas('categories', [
+            'name' => 'New Name',
+        ]);
+
+        $response->assertRedirect();
+    }
+
 }
