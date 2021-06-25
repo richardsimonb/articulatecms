@@ -82,4 +82,18 @@ class CategoryTest extends TestCase
         $response->assertRedirect();
     }
 
+    public function test_category_can_be_deleted()
+    {
+        $category = Category::create([
+            'name' => 'Name',
+            'parent' => 'Parent',
+        ]);
+
+        $response = $this->delete("/categories/{$category->id}");
+        
+        $this->assertDeleted($category);
+
+        $response->assertRedirect();
+    }
+
 }
