@@ -41,10 +41,7 @@ class CategoryTest extends TestCase
 
     public function test_category_show_can_be_rendered()
     {
-        $category = Category::create([
-            'name' => 'Name',
-            'parent' => 'Parent',
-        ]);
+        $category = Category::factory()->create();
 
         $response = $this->get("/categories/{$category->id}");
         
