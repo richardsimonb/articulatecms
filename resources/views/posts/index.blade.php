@@ -21,11 +21,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>Intro to CSS</td>
-                        <td>Adam</td>
-                        <td>858</td>
-                        </tr>
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->author }}</td>
+                                <td>Edit Delete</td>
+                            </tr>
+                        @endforeach
+                        
                     </tbody>
                 </table>
             </div>
