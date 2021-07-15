@@ -11,7 +11,26 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Post
                 </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>Intro to CSS</td>
+                        <td>Adam</td>
+                        <td>858</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+    
 </x-guest-layout>
