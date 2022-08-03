@@ -38,7 +38,7 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->name = $request->input('name');
-        $category->parent = $request->input('parent');
+        $category->parent_id = $request->input('parent');
         $category->save();
 
         return redirect()->route('categories.index');
@@ -76,7 +76,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->name = $request->input('name');
-        $category->parent = $request->input('parent');
+        $category->parent_id = $request->input('parent');
         $category->save();
 
         return redirect()->route('categories.index');
