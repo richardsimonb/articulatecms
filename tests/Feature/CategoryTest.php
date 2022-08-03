@@ -28,12 +28,12 @@ class CategoryTest extends TestCase
     public function test_new_category_can_be_created()
     {
         $response = $this->post('/categories', [
-            'name' => 'Name',
-            'parent' => 'Parent',
+            'name' => 'category',
+            'parent_id' => 0,
         ]);
         
         $this->assertDatabaseHas('categories', [
-            'name' => 'Name',
+            'name' => 'category',
         ]);
 
         $response->assertRedirect();
@@ -52,7 +52,7 @@ class CategoryTest extends TestCase
     {
         $category = Category::create([
             'name' => 'Name',
-            'parent' => 'Parent',
+            'parent_id' => 0,
         ]);
 
         $response = $this->get("/categories/{$category->id}/edit");
@@ -64,12 +64,12 @@ class CategoryTest extends TestCase
     {
         $category = Category::create([
             'name' => 'Name',
-            'parent' => 'Parent',
+            'parent_id' => 0,
         ]);
 
         $response = $this->put("/categories/{$category->id}", [
             'name' => 'New Name',
-            'parent' => 'New Parent',
+            'parent_id' => 1,
         ]);
         
         $this->assertDatabaseHas('categories', [
@@ -83,12 +83,14 @@ class CategoryTest extends TestCase
     {
         $category = Category::create([
             'name' => 'Name',
-            'parent' => 'Parent',
+            'parent_id' => 0,
         ]);
 
         $response = $this->delete("/categories/{$category->id}");
         
-        $this->assertDeleted($category);
+        $this->assertDatabaseMissing('categories', [
+            'name' => 'Name',
+        ]);
 
         $response->assertRedirect();
     }
