@@ -20,4 +20,15 @@ class CategoryTest extends TestCase
         $parentCategory = $category->parent->name;
         $this->assertTrue($parentCategory == "Parent");
     }
+
+    /**
+     * A unit test to check newly created category.
+     *
+     * @return void
+     */
+    public function test_newly_created_category_is_a_child_category()
+    {
+        $category = Category::factory()->forParent(['name' => 'ParentCategory',])->create();
+        $this->assertTrue($childCategory->parent->name == 'ParentCategory');
+    }
 }
